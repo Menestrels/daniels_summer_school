@@ -1,0 +1,19 @@
+{
+  "name": "daniels_summer_school",
+  "version": "1.0.0",
+  "description": "TDL Shchool course!",
+  "main": "comments.js",
+  "scripts": {
+    "format": "npx prettier . --write"
+  },
+  "keywords": [
+    "cypres",
+    "javascript"
+  ],
+  "author": "Dan",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.13.1",
+    "prettier": "^3.3.3"
+  }
+}
