@@ -1,2 +1,2 @@
 # daniels_summer_school
-TDL Shchool!
+TDL Shchool course!
