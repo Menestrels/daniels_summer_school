@@ -3,10 +3,9 @@ import CleanupHelper from "../pageElements/CleanupHelper";
 import Cart from "../pageElements/Cart";
 
 describe("Complete User Jorney", () => {
-
   beforeEach(() => {
     Login.loginUser();
-    
+
     CleanupHelper.cleanCart();
     CleanupHelper.cleanShippingAddress();
 

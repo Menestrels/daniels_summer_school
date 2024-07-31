@@ -23,8 +23,11 @@ class Cart {
       }
 
       cy.getByTestId("add-product-button").click();
-      
-      if (Cypress.config("viewportWidth") > 1024 && cy.get('[data-testid="nav-cart-dropdown"]').if().should("be.visible")) {
+
+      if (
+        Cypress.config("viewportWidth") > 1024 &&
+        cy.get('[data-testid="nav-cart-dropdown"]').if().should("be.visible")
+      ) {
         cy.getByTestId("product-link")
           .filter(`:contains("${productName}")`)
           .should("be.visible");
@@ -38,7 +41,7 @@ class Cart {
         cy.get('[data-testid="nav-cart-dropdown"]', { timeout: 10000 }).should(
           "not.exist",
         );
-    }
+      }
 
       cy.wait("@productAdded");
       cy.wait("@productLoaded");
@@ -62,18 +65,25 @@ class Cart {
     Global.navigateSideBar.openPage("Cart");
     cy.getByTestId("checkout-button").click();
 
-    cy.url().should("include", "step=address").if().then(() => {
-      cy.getByTestId("shipping-first-name-input").type(userData.firstName);
-      cy.getByTestId("shipping-last-name-input").type(userData.lastName);
+    cy.url()
+      .should("include", "step=address")
+      .if()
+      .then(() => {
+        cy.getByTestId("shipping-first-name-input").type(userData.firstName);
+        cy.getByTestId("shipping-last-name-input").type(userData.lastName);
 
-      cy.getByTestId("shipping-address-input").type(userData.address.street);
-      cy.getByTestId("shipping-company-input").type(userData.address.company);
-      cy.getByTestId("shipping-postal-code-input").type(userData.address.postalCode);
-      cy.getByTestId("shipping-city-input").type(userData.address.city);
-      cy.getByTestId("shipping-country-select").select(userData.address.country);
-      cy.getByTestId("shipping-phone-input").type(userData.phone);
-      cy.getByTestId("submit-address-button").click();
-    });
+        cy.getByTestId("shipping-address-input").type(userData.address.street);
+        cy.getByTestId("shipping-company-input").type(userData.address.company);
+        cy.getByTestId("shipping-postal-code-input").type(
+          userData.address.postalCode,
+        );
+        cy.getByTestId("shipping-city-input").type(userData.address.city);
+        cy.getByTestId("shipping-country-select").select(
+          userData.address.country,
+        );
+        cy.getByTestId("shipping-phone-input").type(userData.phone);
+        cy.getByTestId("submit-address-button").click();
+      });
 
     cy.url().should("include", "step=delivery");
     cy.getByTestId("delivery-option-radio").first().click();
@@ -88,8 +98,16 @@ class Cart {
 
   addDefaultProductToCart(quantity = 1) {
     cy.fixture("defaultProductData").then((productData) => {
-      this.addProductToCart(productData[0].name, productData[0].variants, quantity);
-      this.itemExistsInCart(productData[0].name, productData[0].variants, quantity);
+      this.addProductToCart(
+        productData[0].name,
+        productData[0].variants,
+        quantity,
+      );
+      this.itemExistsInCart(
+        productData[0].name,
+        productData[0].variants,
+        quantity,
+      );
     });
   }
 

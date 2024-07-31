@@ -3,4 +3,5 @@
 TDL Shchool course!
 
 ## Quick tips
- - To quickly format all code in the repo run ```npm run format```
+
+- To quickly format all code in the repo run `npm run format`

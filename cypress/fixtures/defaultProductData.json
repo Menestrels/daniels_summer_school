@@ -1,17 +1,17 @@
 [
-    {
-        "name": "Medusa T-Shirt",
-        "variants": ["XL", "Black"],
-        "quantiy": 1
-    },
-    {
-        "name": "Medusa Longsleeve",
-        "variants": ["M"],
-        "quantiy": 1
-    },
-    {
-        "name": "Medusa Coffee Mug",
-        "variants": [],
-        "quantiy": 1
-    }
+  {
+    "name": "Medusa T-Shirt",
+    "variants": ["XL", "Black"],
+    "quantiy": 1
+  },
+  {
+    "name": "Medusa Longsleeve",
+    "variants": ["M"],
+    "quantiy": 1
+  },
+  {
+    "name": "Medusa Coffee Mug",
+    "variants": [],
+    "quantiy": 1
+  }
 ]

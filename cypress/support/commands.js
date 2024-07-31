@@ -27,9 +27,9 @@ import Login from "../e2e/pageElements/Login";
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add("getByTestId", (testId) => {
-    return cy.get(`[data-testid="${testId}"]`);
-    });
+  return cy.get(`[data-testid="${testId}"]`);
+});
 
 Cypress.Commands.add("login", (email, password) => {
-    return Login.loginUser(email, password);
+  return Login.loginUser(email, password);
 });
