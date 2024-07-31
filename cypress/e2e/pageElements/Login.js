@@ -17,6 +17,11 @@ class Login {
       cy.url().should("include", "/us");
     });
   }
+  logOutUser() {
+    cy.visit("/dashboard");
+    cy.getByTestId("logout-button").filter(":visible").first().click();
+    cy.url().should("include", "/sign-in");
+  }
 }
 
 export default new Login();
