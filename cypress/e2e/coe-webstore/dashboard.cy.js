@@ -8,19 +8,20 @@ describe("COE Webstore dashboard functionality", () => {
   });
   it("correct user information is dispayed in the dashboard", () => {
     Global.openDashboard();
+
     cy.fixture("defaultUserProfileData").then((userData) => {
-      //TODO this could be written better
-      cy.get(
-        `[data-testid="welcome-message"][data-value="${userData.firstName}"]`,
-      ).should("be.visible");
-      cy.getByTestId("customer-email").should(
-        "contain",
-        Cypress.env("userEmail"),
-      );
-      cy.getByTestId("profile-link")
-        .should("be.visible")
-        .first()
-        .click({ force: true });
+      if(Cypress.config("viewportWidth") > 1024) {
+            //TODO this could be written better
+            cy.get(
+              `[data-testid="welcome-message"][data-value="${userData.firstName}"]`,
+            ).should("be.visible");
+            cy.getByTestId("customer-email").should(
+              "contain",
+              Cypress.env("userEmail"),
+            );
+      }
+      cy.getByTestId("profile-link").filter(":visible").first().click();
+      cy.getByTestId("addresses-link").click();
       cy.getByTestId("current-info")
         .should("contain", userData.firstName)
         .should("be.visible");
