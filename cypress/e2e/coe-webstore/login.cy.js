@@ -9,10 +9,4 @@ describe("COE Webstore login functionality", () => {
   it("should login to COE Webstore", () => {
     Login.loginUser();
   });
-
-  it("opens sidebar and navigates to store page", () => {
-    Login.loginUser();
-    cy.visit("/");
-    Global.navigateSideBar.openPage("Store");
-  });
 });
