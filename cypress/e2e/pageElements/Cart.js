@@ -65,6 +65,7 @@ class Cart {
     Global.navigateSideBar.openPage("Cart");
     cy.getByTestId("checkout-button").click();
 
+    //TODO if() does not work; if("include", "step=address") as well
     cy.url()
       .should("include", "step=address")
       .if()
@@ -86,7 +87,9 @@ class Cart {
       });
 
     cy.url().should("include", "step=delivery");
-    cy.getByTestId("delivery-option-radio").first().click();
+    cy.getByTestId("delivery-option-radio")
+      .contains("span", userData.address.shippingMethod)
+      .click();
     cy.getByTestId("submit-delivery-option-button").click();
     cy.getByTestId("submit-payment-button").click();
 
