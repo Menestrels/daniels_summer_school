@@ -14,18 +14,13 @@ describe("COE Webstore dashboard functionality", () => {
     Global.openDashboard();
 
     cy.fixture("defaultUserProfileData").then((userData) => {
-      if (Cypress.config("viewportWidth") > 1024) {
-        //TODO this could be written better
-        cy.get(
-          `[data-testid="welcome-message"][data-value="${userData.firstName}"]`,
-        ).should("be.visible");
-        cy.getByTestId("customer-email").should(
-          "contain",
-          Cypress.env("USER_EMAIL"),
-        );
-      }
-      cy.getByTestId("profile-link").filter(":visible").first().click();
-      cy.getByTestId("addresses-link").filter(":visible").first().click();
+      cy.getByTestId("welcome-message").contains(userData.firstName);
+      cy.getByTestId("customer-email").contains(Cypress.env("USER_EMAIL"));
+      cy.getByTestId("profile-link")
+        .filter(":visible")
+        .contains("Profile")
+        .click();
+      cy.getByTestId("addresses-link").should("be.visible").click();
       cy.getByTestId("current-info")
         .should("contain", userData.firstName)
         .should("be.visible");

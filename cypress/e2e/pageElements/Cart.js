@@ -14,7 +14,6 @@ class Cart {
     for (let i = 0; i < quantity; i++) {
       if (variantsList.length != 0) {
         variantsList.forEach((variant) => {
-          //TODO variant selector is a bit naive, could be improved
           cy.getByTestId("option-button")
             .filter(`:contains("${variant}")`)
             .should("not.be.disabled")
@@ -27,8 +26,8 @@ class Cart {
       cy.wait("@productAdded");
       cy.wait("@productLoaded");
 
-      cy.getByTestId("nav-cart-dropdown")
-        .if()
+      cy.get('[data-testid="nav-cart-dropdown"]')
+        .should("be.visible")
         .then(() => {
           cy.getByTestId("product-link")
             .filter(`:contains("${productName}")`)
@@ -40,14 +39,12 @@ class Cart {
                 .should("be.visible");
             });
           }
-
-          cy.get('[data-testid="nav-cart-dropdown"]', {
-            timeout: 10000,
-          }).should("not.exist");
         });
+      cy.get('[data-testid="nav-cart-dropdown"]', {
+        timeout: 10000,
+      }).should("not.exist");
     }
   }
-  //TODO a bit naive check, this assumes that there are no other items in the cart to work properly
   itemExistsInCart(productName, variantsList = [], quantity = 1) {
     cy.visit("/cart");
     cy.getByTestId("product-title").should("contain", productName);
@@ -114,8 +111,6 @@ class Cart {
       );
     });
   }
-
-  //TODO add method to remove an item from cart
 }
 
 export default new Cart();
