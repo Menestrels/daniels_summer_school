@@ -17,7 +17,7 @@ describe("COE Webstore login functionality", () => {
     Login.loginUser();
     cy.visit("/");
     Global.openSideBar();
-    cy.getByTestId("logout-button").filter(":visible").click();
+    cy.getByTestId("logout-button").should("be.visible").click();
     cy.url().should("include", "/sign-in");
   });
 });

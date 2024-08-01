@@ -8,14 +8,12 @@ class Cart {
     cy.intercept("GET", "/products/**").as("productLoaded");
 
     cy.visit("/store");
-    cy.getByTestId("product-wrapper")
-      .filter(`:contains("${productName}")`)
-      .click();
+    cy.getByTestId("product-wrapper").contains(productName).click();
     for (let i = 0; i < quantity; i++) {
       if (variantsList.length != 0) {
         variantsList.forEach((variant) => {
           cy.getByTestId("option-button")
-            .filter(`:contains("${variant}")`)
+            .contains(variant)
             .should("not.be.disabled")
             .click();
         });
@@ -26,16 +24,16 @@ class Cart {
       cy.wait("@productAdded");
       cy.wait("@productLoaded");
 
-      cy.get('[data-testid="nav-cart-dropdown"]')
+      cy.get('[data-testid="nav-cart-dropdown"]', { timeout: 10000 })
         .should("be.visible")
         .then(() => {
           cy.getByTestId("product-link")
-            .filter(`:contains("${productName}")`)
+            .contains(productName)
             .should("be.visible");
           if (variantsList.length != 0) {
             variantsList.forEach((variant) => {
               cy.getByTestId("cart-item-variant")
-                .filter(`:contains("${variant}")`)
+                .contains(variant)
                 .should("be.visible");
             });
           }
@@ -51,7 +49,7 @@ class Cart {
     if (variantsList.length != 0) {
       variantsList.forEach(($variant) => {
         cy.getByTestId("product-variant")
-          .filter(`:contains("${$variant}")`)
+          .contains($variant)
           .should("be.visible");
       });
     }

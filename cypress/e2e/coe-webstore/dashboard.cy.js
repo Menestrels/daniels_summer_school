@@ -14,8 +14,10 @@ describe("COE Webstore dashboard functionality", () => {
     Global.openDashboard();
 
     cy.fixture("defaultUserProfileData").then((userData) => {
-      cy.getByTestId("welcome-message").contains(userData.firstName);
-      cy.getByTestId("customer-email").contains(Cypress.env("USER_EMAIL"));
+      cy.getByTestId("welcome-message")
+        .contains(userData.firstName);
+      cy.getByTestId("customer-email")
+        .contains(Cypress.env("USER_EMAIL"));
       cy.getByTestId("profile-link")
         .filter(":visible")
         .contains("Profile")
