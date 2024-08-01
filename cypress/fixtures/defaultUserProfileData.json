@@ -9,6 +9,7 @@
     "city": "Riga",
     "postalCode": "LV1001",
     "country": "Latvia",
+    "countryCode": "LV",
     "shippingMethod": "FakeEx Standard"
   }
 }

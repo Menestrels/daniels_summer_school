@@ -24,10 +24,13 @@ class Cart {
 
       cy.getByTestId("add-product-button").click();
 
+
       if (
         Cypress.config("viewportWidth") > 1024 &&
-        cy.get('[data-testid="nav-cart-dropdown"]').if().should("be.visible")
+        cy.getByTestId("nav-cart-dropdown").if().should("be.visible")
       ) {
+        //TODO investigate stability issue - sometimes dropdown is not visible
+        cy.getByTestId("nav-cart-dropdown").should("be.visible")
         cy.getByTestId("product-link")
           .filter(`:contains("${productName}")`)
           .should("be.visible");
@@ -42,7 +45,6 @@ class Cart {
           "not.exist",
         );
       }
-
       cy.wait("@productAdded");
       cy.wait("@productLoaded");
     }
@@ -61,6 +63,20 @@ class Cart {
     cy.getByTestId("product-select-button").should("have.value", quantity);
   }
 
+  fillAdressForm(userData) {
+    cy.getByTestId("shipping-first-name-input").type(userData.firstName);
+    cy.getByTestId("shipping-last-name-input").type(userData.lastName);
+
+    cy.getByTestId("shipping-address-input").type(userData.address.street);
+    cy.getByTestId("shipping-company-input").type(userData.address.company);
+    cy.getByTestId("shipping-postal-code-input").type(
+      userData.address.postalCode,
+    );
+    cy.getByTestId("shipping-city-input").type(userData.address.city);
+    cy.getByTestId("shipping-country-select").select(userData.address.country);
+    cy.getByTestId("shipping-phone-input").type(userData.phone);
+  }
+
   checkout(userData) {
     Global.navigateSideBar.openPage("Cart");
     cy.getByTestId("checkout-button").click();
@@ -70,19 +86,7 @@ class Cart {
       .should("include", "step=address")
       .if()
       .then(() => {
-        cy.getByTestId("shipping-first-name-input").type(userData.firstName);
-        cy.getByTestId("shipping-last-name-input").type(userData.lastName);
-
-        cy.getByTestId("shipping-address-input").type(userData.address.street);
-        cy.getByTestId("shipping-company-input").type(userData.address.company);
-        cy.getByTestId("shipping-postal-code-input").type(
-          userData.address.postalCode,
-        );
-        cy.getByTestId("shipping-city-input").type(userData.address.city);
-        cy.getByTestId("shipping-country-select").select(
-          userData.address.country,
-        );
-        cy.getByTestId("shipping-phone-input").type(userData.phone);
+        this.fillAdressForm(userData);
         cy.getByTestId("submit-address-button").click();
       });
 
