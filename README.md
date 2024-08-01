@@ -1,6 +1,6 @@
 # Daniels Summer School 2024 - Cypress project
 
-This Cypress automated test framework is designed to ensure the quality and reliability of essential https://coe-webstore.tdlbox.com online store functionalities through automated testing procedures. It is part of the TDL TestDevLab Summer challenge bootcamp.
+This Cypress automated test framework is designed to ensure the quality and reliability of essential https://coe-webstore.tdlbox.com Desktop online store functionalities through automated testing procedures. These test does not support mobile. It is part of the TDL TestDevLab Summer challenge bootcamp.
 
 Full test plan can be found here: https://tdlschool.atlassian.net/browse/TSS22N-265
 
