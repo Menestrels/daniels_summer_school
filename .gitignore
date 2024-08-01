@@ -6,3 +6,5 @@ operations.js
 quotes.js
 variables.js
 cypress.env.json
+mochawesome-report
+cypress/screenshots

@@ -29,7 +29,3 @@ import Login from "../e2e/pageElements/Login";
 Cypress.Commands.add("getByTestId", (testId) => {
   return cy.get(`[data-testid="${testId}"]`);
 });
-
-Cypress.Commands.add("login", (email, password) => {
-  return Login.loginUser(email, password);
-});
