@@ -24,7 +24,7 @@ class Cart {
       cy.wait("@productAdded");
       cy.wait("@productLoaded");
 
-      cy.get('[data-testid="nav-cart-dropdown"]', { timeout: 10000 })
+      cy.get('[data-testid="nav-cart-dropdown"]', { timeout: 10000 }) // TODO: define element in page class
         .should("be.visible")
         .then(() => {
           cy.getByTestId("product-link")
