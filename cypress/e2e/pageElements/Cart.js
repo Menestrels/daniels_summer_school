@@ -24,8 +24,11 @@ class Cart {
 
       cy.getByTestId("add-product-button").click();
 
+      cy.wait("@productAdded");
+      cy.wait("@productLoaded");
+
       // added wait because nav-cart-dropdown behavior is not stable, in rare ocasions it is loaded and instanly removed
-      cy.wait(1000);
+      // cy.wait(1000);
 
       if (
         Cypress.config("viewportWidth") > 1024 &&
@@ -45,8 +48,6 @@ class Cart {
           "not.exist",
         );
       }
-      cy.wait("@productAdded");
-      cy.wait("@productLoaded");
     }
   }
   //TODO this assumes that there are no other items in the cart
