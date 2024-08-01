@@ -14,10 +14,8 @@ describe("COE Webstore dashboard functionality", () => {
     Global.openDashboard();
 
     cy.fixture("defaultUserProfileData").then((userData) => {
-      cy.getByTestId("welcome-message")
-        .contains(userData.firstName);
-      cy.getByTestId("customer-email")
-        .contains(Cypress.env("USER_EMAIL"));
+      cy.getByTestId("welcome-message").contains(userData.firstName); // TODO: define elements in page class
+      cy.getByTestId("customer-email").contains(Cypress.env("USER_EMAIL"));
       cy.getByTestId("profile-link")
         .filter(":visible")
         .contains("Profile")
@@ -40,7 +38,7 @@ describe("COE Webstore dashboard functionality", () => {
   it("user can add a new adress in the dashboard and it dispays correct information", () => {
     Global.openDashboard();
 
-    cy.getByTestId("addresses-link").filter(":visible").click();
+    cy.getByTestId("addresses-link").filter(":visible").click(); // TODO: define elements in page class
     cy.getByTestId("add-address-button").click();
 
     cy.fixture("defaultUserProfileData").then((userData) => {

@@ -7,7 +7,7 @@ describe("COE Webstore store functionality", () => {
 
   it("Products should be visible in the main view and /store view", () => {
     cy.visit("/");
-    cy.getByTestId("product-wrapper")
+    cy.getByTestId("product-wrapper")   // TODO: define element in page class
       .should("be.visible")
       .each(($el) => {
         cy.wrap($el).within(() => {
@@ -15,7 +15,7 @@ describe("COE Webstore store functionality", () => {
         });
       });
     cy.visit("/store");
-    cy.getByTestId("product-wrapper")
+    cy.getByTestId("product-wrapper") // TODO: define element in page class
       .should("be.visible")
       .each(($el) => {
         cy.wrap($el).within(() => {

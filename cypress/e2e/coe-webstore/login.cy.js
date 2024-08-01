@@ -13,11 +13,10 @@ describe("COE Webstore login functionality", () => {
   it("logout from COE Webstore via dashboard or side bar menu", () => {
     Login.loginUser();
     Login.logOutUser();
-
     Login.loginUser();
     cy.visit("/");
     Global.openSideBar();
-    cy.getByTestId("logout-button").should("be.visible").click();
+    cy.getByTestId("logout-button").should("be.visible").click(); // TODO: define element in page class
     cy.url().should("include", "/sign-in");
   });
 });

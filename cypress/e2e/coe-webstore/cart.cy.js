@@ -3,10 +3,12 @@ import Cart from "../pageElements/Cart";
 import CleanupHelper from "../pageElements/CleanupHelper";
 
 describe("COE Webstore cart functionality", () => {
+
   beforeEach(() => {
     Login.loginUser();
     CleanupHelper.cleanCart();
   });
+
   it("user is able to add item to a cart", () => {
     Cart.addDefaultProductToCart();
   });
@@ -14,6 +16,7 @@ describe("COE Webstore cart functionality", () => {
   it("user is able to add multiple pieces of the same item to a cart", () => {
     Cart.addDefaultProductToCart(3);
   });
+
   it("user is able to add multiple different items to a cart", () => {
     cy.fixture("defaultProductData").then((productData) => {
       productData.forEach((product) => {
@@ -23,4 +26,5 @@ describe("COE Webstore cart functionality", () => {
     });
     cy.visit("/cart");
   });
+  
 });
