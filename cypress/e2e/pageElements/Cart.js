@@ -24,11 +24,12 @@ class Cart {
 
       cy.getByTestId("add-product-button").click();
 
+      // added wait because nav-cart-dropdown behavior is not stable, in rare ocasions it is loaded and instanly removed
+      cy.wait(1000);
+
       if (
         Cypress.config("viewportWidth") > 1024 &&
-        cy.getByTestId("nav-cart-dropdown").if().should("be.visible") &&
-        //TODO investigate stability issue - sometimes dropdown is not visible but the statemend above returns true
-        cy.getByTestId("nav-cart-dropdown").if()
+        cy.getByTestId("nav-cart-dropdown").if().filter(":visible")
       ) {
         cy.getByTestId("product-link")
           .filter(`:contains("${productName}")`)
