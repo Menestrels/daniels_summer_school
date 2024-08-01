@@ -1,0 +1,20 @@
+name: CEO Webstore automated tests
+on: [push, workflow_dispatch]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.7
+    - name: Run all Cypress tets
+      uses: cypress-io/github-action@v6.5.0
+      with: 
+          install: True
+          command: npm run cypress-run
+    - name: Upload report & screenshot
+      uses: actions/upload-artifact@v4.3.4
+      with:
+        name: report
+        path: ./mochawesome-report
+        
