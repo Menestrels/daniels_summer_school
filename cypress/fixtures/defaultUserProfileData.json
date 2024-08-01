@@ -1,15 +1,15 @@
 {
   "firstName": "Janis",
   "lastName": "Berzins",
-  "phone": "+371 00884499",
+  "phone": "+1 416-555-1234",
   "address": {
-    "company": "SIA Liepa",
-    "street": "Brivibas gatve 1",
+    "company": "Liepa Inc.",
+    "street": "123 Maple Street",
     "appartment": "32",
-    "city": "Riga",
-    "postalCode": "LV1001",
-    "country": "Latvia",
-    "countryCode": "LV",
+    "city": "Toronto",
+    "postalCode": "M5H 2N2",
+    "country": "Canada",
+    "countryCode": "CA",
     "shippingMethod": "FakeEx Standard"
   }
 }
