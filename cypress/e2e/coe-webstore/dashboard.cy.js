@@ -20,7 +20,7 @@ describe("COE Webstore dashboard functionality", () => {
         ).should("be.visible");
         cy.getByTestId("customer-email").should(
           "contain",
-          Cypress.env("userEmail"),
+          Cypress.env("USER_EMAIL"),
         );
       }
       cy.getByTestId("profile-link").filter(":visible").first().click();
@@ -32,7 +32,7 @@ describe("COE Webstore dashboard functionality", () => {
         .should("contain", userData.lastName)
         .should("be.visible");
       cy.getByTestId("current-info")
-        .should("contain", Cypress.env("userEmail"))
+        .should("contain", Cypress.env("USER_EMAIL"))
         .should("be.visible");
       cy.getByTestId("current-info")
         .should("contain", userData.phone)

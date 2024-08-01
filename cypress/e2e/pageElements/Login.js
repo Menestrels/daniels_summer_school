@@ -6,8 +6,8 @@ class Login {
   };
 
   loginUser(
-    email = Cypress.env("userEmail"),
-    password = Cypress.env("userPassword"),
+    email = Cypress.env("USER_EMAIL"),
+    password = Cypress.env("USER_PASSWORD"),
   ) {
     cy.session([email, password], () => {
       cy.visit("/sign-in");
