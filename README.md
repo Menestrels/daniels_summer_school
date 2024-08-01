@@ -1,11 +1,14 @@
 # Daniels Summer School 2024 - Cypress project
 
-TDL Shchool course!
+This Cypress automated test framework is designed to ensure the quality and reliability of essential https://coe-webstore.tdlbox.com online store functionalities through automated testing procedures. It is part of the TDL TestDevLab Summer challenge bootcamp.
+
+Full test plan can be found here: https://tdlschool.atlassian.net/browse/TSS22N-265
 
 ## Project setup
 
-- navigate to project directory
+- navigate to project root directory
 - run `npm install` to install dependencies
+- by using template file in the root directory `cypress.env.json.template` create a copy of it named `cypress.env.json` in the project root and replace "INSERT_YOUR_EMAIL" and "INSERT_YOUR_PASSWORD" with pre-created test user email and password
 - run `npm run cypress-open` or `npm run cypress-run` (for headless test execution)
 
 ## Quick tips

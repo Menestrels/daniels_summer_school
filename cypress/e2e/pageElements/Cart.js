@@ -27,30 +27,27 @@ class Cart {
       cy.wait("@productAdded");
       cy.wait("@productLoaded");
 
-      // added wait because nav-cart-dropdown behavior is not stable, in rare ocasions it is loaded and instanly removed
-      // cy.wait(1000);
+      cy.getByTestId("nav-cart-dropdown")
+        .if()
+        .then(() => {
+          cy.getByTestId("product-link")
+            .filter(`:contains("${productName}")`)
+            .should("be.visible");
+          if (variantsList.length != 0) {
+            variantsList.forEach((variant) => {
+              cy.getByTestId("cart-item-variant")
+                .filter(`:contains("${variant}")`)
+                .should("be.visible");
+            });
+          }
 
-      if (
-        Cypress.config("viewportWidth") > 1024 &&
-        cy.getByTestId("nav-cart-dropdown").if().filter(":visible")
-      ) {
-        cy.getByTestId("product-link")
-          .filter(`:contains("${productName}")`)
-          .should("be.visible");
-        if (variantsList.length != 0) {
-          variantsList.forEach((variant) => {
-            cy.getByTestId("cart-item-variant")
-              .filter(`:contains("${variant}")`)
-              .should("be.visible");
-          });
-        }
-        cy.get('[data-testid="nav-cart-dropdown"]', { timeout: 10000 }).should(
-          "not.exist",
-        );
-      }
+          cy.get('[data-testid="nav-cart-dropdown"]', {
+            timeout: 10000,
+          }).should("not.exist");
+        });
     }
   }
-  //TODO this assumes that there are no other items in the cart
+  //TODO a bit naive check, this assumes that there are no other items in the cart to work properly
   itemExistsInCart(productName, variantsList = [], quantity = 1) {
     cy.visit("/cart");
     cy.getByTestId("product-title").should("contain", productName);
@@ -82,7 +79,6 @@ class Cart {
     Global.navigateSideBar.openPage("Cart");
     cy.getByTestId("checkout-button").click();
 
-    //TODO if() does not work; if("include", "step=address") as well
     cy.url()
       .should("include", "step=address")
       .if()
