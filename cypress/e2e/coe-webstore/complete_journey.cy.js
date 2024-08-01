@@ -2,7 +2,7 @@ import Login from "../pageElements/Login";
 import CleanupHelper from "../pageElements/CleanupHelper";
 import Cart from "../pageElements/Cart";
 
-describe("Complete User Jorney", () => {
+describe("Complete User Journey", () => {
   beforeEach(() => {
     Login.loginUser();
 

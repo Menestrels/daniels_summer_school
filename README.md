@@ -15,4 +15,4 @@ Full test plan can be found here: https://tdlschool.atlassian.net/browse/TSS22N-
 
 - To quickly format all code in the repo run `npm run format`
 - To quickly delete all mochawesome reports run `report-cleanup`
-- To run a single test file run `npx cypress run --spec "cypress/e2e/coe-webstore/complete_jorney.cy.js"`
+- To run a single test file run `npx cypress run --spec "cypress/e2e/coe-webstore/complete_journey.cy.js"`
