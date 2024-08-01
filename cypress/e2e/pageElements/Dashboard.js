@@ -1,6 +1,6 @@
 class Dashboard {
   elements = {
-    getDashboardLink: () => "/dashboard",
+    getDashboardLink: () => "/dashboard", // TODO: not sure if this url fits best under 'elements'. would be nice to have elements like cy.getByTestId("first-name-input") defined here
   };
 
   visitDashboard = () => {
