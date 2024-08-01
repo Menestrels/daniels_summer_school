@@ -24,7 +24,6 @@ class Cart {
 
       cy.getByTestId("add-product-button").click();
 
-
       if (
         Cypress.config("viewportWidth") > 1024 &&
         cy.getByTestId("nav-cart-dropdown").if().should("be.visible") &&

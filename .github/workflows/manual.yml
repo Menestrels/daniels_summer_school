@@ -5,19 +5,19 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4.1.7
-    - name: Run all Cypress tests
-      uses: cypress-io/github-action@v6.5.0
-      with: 
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+      - name: Run all Cypress tests
+        uses: cypress-io/github-action@v6.5.0
+        with:
           install: True
           command: npm run cypress-run
-      env:
-        CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
-        CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
-    - name: Upload report & screenshot
-      uses: actions/upload-artifact@v4.3.4
-      with:
-        name: report
-        path: ./mochawesome-report
-        
+        env:
+          CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
+          CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
+      - name: Upload report & screenshot
+        uses: actions/upload-artifact@v4.3.4
+        if: always()
+        with:
+          name: report
+          path: ./mochawesome-report

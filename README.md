@@ -3,9 +3,10 @@
 TDL Shchool course!
 
 ## Project setup
- - navigate to project directory
- - run `npm install` to install dependencies
- - run `npm run cypress-open` or `npm run cypress-run` (for headless test execution)
+
+- navigate to project directory
+- run `npm install` to install dependencies
+- run `npm run cypress-open` or `npm run cypress-run` (for headless test execution)
 
 ## Quick tips
 

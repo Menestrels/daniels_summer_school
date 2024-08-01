@@ -9,8 +9,8 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     reporter: "mochawesome",
-    "reporterOptions": {
-      "overwrite": false,
-    }
+    reporterOptions: {
+      overwrite: false,
+    },
   },
 });
